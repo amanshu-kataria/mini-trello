@@ -4,6 +4,7 @@
 
 body{
     margin: 0px;
+    font-family: 'Cormorant Garamond', serif;
 }
 
 .header{
@@ -17,6 +18,8 @@ body{
     font-size: 20px;
     padding-left: 2%;
     margin-bottom: 2%;
+    font-size: 24px;
+    font-family: 'Dancing Script', cursive;
 }
 
 .boardShell{
@@ -37,7 +40,7 @@ body{
 
 .boardName{
     font-weight: bold;
-    text-align: center;
+    padding-left: 10px;
     margin-bottom: 10px;
     color: #f7f7f7;
     line-height: 24px;
@@ -77,6 +80,10 @@ body{
     line-height: 40px;
     background-color: rgb(193, 61, 61, 0.1);
     color: #c36161;
+}
+
+.newBoardSign{
+    font-size: 26px;
 }
 
 .addNewBoard:hover{
