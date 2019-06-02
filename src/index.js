@@ -1,30 +1,6 @@
 onload = function() {
-  let boards = localStorage.getItem('boards');
-  let task = localStorage.getItem('task');
-
-  if (!boards) {
-    localStorage.setItem(
-      'boards',
-      JSON.stringify([{ boardName: 'Board One', id: 'sfjdbjkf' }])
-    );
-    // boards = [];
-  } else {
-    boards = JSON.parse(boards);
-  }
-  if (!task) {
-    localStorage.setItem(
-      'task',
-      JSON.stringify({
-        sfjdbjkf: [
-          { taskName: 'Something to do', id: 12345 },
-          { taskName: 'something else', id: 45645 }
-        ]
-      })
-    );
-    // task = {};
-  } else {
-    task = JSON.parse(task);
-  }
+  let boards = JSON.parse(localStorage.getItem('boards')) || [];
+  let task = JSON.parse(localStorage.getItem('task')) || {};
 
   if (boards) {
     let allBoards = document.getElementById('boards');
@@ -73,7 +49,23 @@ onload = function() {
 
 function onTaskEdit(event) {
   const { id, innerText } = event.target;
-  let task = document.getElementById(id);
-  let tasks = localStorage.getItem('task');
-  const boardId = task.parentNode.parentElement.id;
+  let currentTask = document.getElementById(id);
+
+  let tasks = JSON.parse(localStorage.getItem('task')) || {};
+  const boardId = currentTask.parentNode.parentElement.id;
+
+  if (tasks.hasOwnProperty(boardId)) {
+    let boardTasks = tasks[boardId];
+    let taskIndex = boardTasks.findIndex(task => {
+      return task.id === parseInt(id);
+    });
+
+    boardTasks[taskIndex].taskName = innerText;
+    tasks[boardId] = boardTasks;
+    localStorage.setItem('task', JSON.stringify(tasks));
+
+    // Show success notification
+  } else {
+    // display error message
+  }
 }
