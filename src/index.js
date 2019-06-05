@@ -1,4 +1,5 @@
 onload = function() {
+  console.log('Hello');
   let boards = JSON.parse(localStorage.getItem('boards')) || [];
   let task = JSON.parse(localStorage.getItem('task')) || {};
 
@@ -68,4 +69,9 @@ function onTaskEdit(event) {
   } else {
     // display error message
   }
+}
+
+function toggleAddNewModal(action) {
+  const element = document.getElementById('addBoardModal');
+  element.style.display = action ? 'block' : 'none';
 }

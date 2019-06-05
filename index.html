@@ -3,7 +3,6 @@
     <head>
         <title>To Do Vanilla JS</title>
         <script src="./src/index.js"></script>
-        <script src="http://wzrd.in/standalone/uuid%2Fv5@latest"></script>
         <link href="https://fonts.googleapis.com/css?family=Cormorant+Garamond|Dancing+Script&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="./style.css" />
     </head>
@@ -30,13 +29,23 @@
                         </div>    
                     </div> -->
                 </div>
-                <div class="addNewBoard">
-                    <span class="newBoardSign">+</span> Add a board
+                <div class="addNewBoard" onclick="toggleAddNewModal(true)" >
+                    <span class="newBoardSign">+</span>
+                    <span>Add a board</span>
                 </div> 
             </div>
-            <!-- <div class="newTaskModel">
-
-            </div> -->
+            <div class="newBoardModal" id="addBoardModal">
+                <div class="newBoardContent">
+                    <div class="newBoardModalHeader">
+                        Add a new Board
+                    </div>
+                    <input class="newBoardInput" placeholder="Board name" />
+                    <div class="modalButtonArea">
+                        <div class="modalButton createButton">Create</div>
+                        <div class="modalButton cancelButton" onclick="toggleAddNewModal(false)">Cancel</div>
+                    </div>
+                </div>
+            </div>
         </div>
     </body>
 </html>

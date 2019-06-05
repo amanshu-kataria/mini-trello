@@ -73,11 +73,11 @@ body{
 
 .addNewBoard{
     width: 250px;
-    max-height: 40px;
+    height: 40px;
     margin-left:10px;
     padding-left: 10px;
     border-radius: 5px;
-    line-height: 40px;
+    line-height: 35px;
     background-color: rgb(193, 61, 61, 0.1);
     color: #c36161;
 }
@@ -95,3 +95,88 @@ body{
     content: "Task Name";
     color:grey;
 }
+
+.newBoardModal{
+    display: none;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    position: fixed;
+    top: 60px;
+    left: 0;
+    z-index: 9999;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.newBoardContent{
+    width: 300px;
+    height: 200px;
+    margin: 15% auto;
+    background-color: #fff;
+    border-radius: 5px;
+}
+
+.newBoardModalHeader{
+    line-height: 40px;
+    padding-left: 20px;
+    background-color: #c53163;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 5px 5px 0 0;
+}
+
+.newBoardContent>input{
+    display: block;
+    width: 80%;
+    margin: 10px auto;
+    height: 40px;
+    border-width: 0 0 1px 0;
+    border-style: solid;
+    border-color: #ccc;
+    outline: none;
+    padding: 0 5px;
+    font-size: 16px;
+}
+
+.newBoardContent>input:focus{
+    border-color: #f17070;
+    border-width: 0 0 2px 0;
+}
+
+.modalButtonArea{
+    display: flex;
+    justify-content: center;
+    position: relative;
+    top: 20px;
+}
+
+.modalButton{
+    width: 60px;
+    padding: 5px;
+    text-align: center;
+    border-radius: 3px;
+    color: #fff;
+}
+
+.createButton{
+    background-color: #03A9F4;
+    margin-right: 20px;
+    float: left;
+}
+
+.createButton:hover{
+    background-color: #139cda;
+    cursor: pointer;
+
+}
+
+.cancelButton{
+    background-color: #949494;
+    float: left
+}
+
+.cancelButton:hover{
+    background-color: #7b7b7b;
+    cursor: pointer;
+}
+
