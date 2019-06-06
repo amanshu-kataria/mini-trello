@@ -1,5 +1,4 @@
 onload = function() {
-  console.log('Hello');
   let boards = JSON.parse(localStorage.getItem('boards')) || [];
   let task = JSON.parse(localStorage.getItem('task')) || {};
 
@@ -15,7 +14,7 @@ onload = function() {
       newBoard.id = item.id;
 
       boardName.className = 'boardName';
-      boardName.innerHTML = item.boardName;
+      boardName.innerText = item.boardName;
 
       newBoard.appendChild(boardName);
 
@@ -29,7 +28,7 @@ onload = function() {
           newTask.contentEditable = true;
           newTask.className = 'toDoTask';
           newTask.id = taskItem.id;
-          newTask.innerHTML = taskItem.taskName;
+          newTask.innerText = taskItem.taskName;
           newTask.onblur = onTaskEdit;
           tasksFragment.appendChild(newTask);
         });
@@ -37,7 +36,7 @@ onload = function() {
       }
       let createTaskButton = document.createElement('div');
       createTaskButton.className = 'createNewTask';
-      createTaskButton.innerHTML = 'Add New Task';
+      createTaskButton.innerText = 'Add New Task';
 
       taskList.appendChild(createTaskButton);
 
@@ -72,6 +71,66 @@ function onTaskEdit(event) {
 }
 
 function toggleAddNewModal(action) {
-  const element = document.getElementById('addBoardModal');
-  element.style.display = action ? 'block' : 'none';
+  const modal = document.getElementById('addBoardModal');
+  if (action) {
+    modal.style.display = 'block';
+    modal.querySelector('input').focus();
+  } else {
+    modal.style.display = 'none';
+  }
+}
+
+function createBoard() {
+  const modal = document.getElementById('addBoardModal');
+  const { value } = modal.querySelector('input');
+
+  if (value.trim()) {
+    let boards = JSON.parse(localStorage.getItem('boards')) || [];
+    const id = generateID();
+    boards.push({
+      boardName: value.trim(),
+      id
+    });
+
+    localStorage.setItem('boards', JSON.stringify(boards));
+
+    let allBoards = document.getElementById('boards');
+
+    let newBoard = document.createElement('div');
+    let boardName = document.createElement('div');
+    let taskList = document.createElement('div');
+
+    newBoard.className = 'toDoBoard';
+    newBoard.id = id;
+
+    boardName.className = 'boardName';
+    boardName.innerText = value;
+
+    taskList.className = 'taskList';
+
+    let createTaskButton = document.createElement('div');
+    createTaskButton.className = 'createNewTask';
+    createTaskButton.innerText = 'Add New Task';
+
+    taskList.appendChild(createTaskButton);
+
+    newBoard.appendChild(boardName);
+    newBoard.appendChild(taskList);
+
+    allBoards.appendChild(newBoard);
+
+    modal.style.display = 'none';
+  } else {
+    let errorText = modal.getElementsByClassName('newBoardError')[0];
+    errorText.style.display = 'block';
+  }
+}
+
+function generateID() {
+  function uuid() {
+    return Math.floor((1 + Math.random()) * 0x10000)
+      .toString(16)
+      .substring(1);
+  }
+  return uuid() + uuid() + '-' + uuid() + '-' + uuid();
 }
