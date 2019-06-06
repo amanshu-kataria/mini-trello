@@ -29,8 +29,13 @@ body{
     top: 100px;
 }
 
-.toDoBoard{
+.boardsList{
+    display: flex;
     max-height: 600px;
+    align-items: flex-start;
+}
+
+.toDoBoard{
     margin-left:10px;
     min-width: 250px;
     border-radius: 5px;
@@ -142,6 +147,15 @@ body{
     border-color: #f17070;
     border-width: 0 0 2px 0;
 }
+
+.newBoardError{
+    display: none;
+    color: red;
+    font-size: 14px;
+    margin-top: -5px;
+    padding-left: 10%;
+}
+
 
 .modalButtonArea{
     display: flex;

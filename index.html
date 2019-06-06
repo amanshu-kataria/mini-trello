@@ -14,7 +14,7 @@
                 </div>
             </div>
            <div class="boardShell" id="boardWrapper"> 
-               <div id='boards'>
+               <div id='boards' class="boardsList">
                     <!-- <div class="toDoBoard">
                         <div class="boardName">
                             Board One
@@ -39,9 +39,10 @@
                     <div class="newBoardModalHeader">
                         Add a new Board
                     </div>
-                    <input class="newBoardInput" placeholder="Board name" />
+                    <input id="newBoardValue" class="newBoardInput" placeholder="Board name"  />
+                    <div class="newBoardError">*Required</div>
                     <div class="modalButtonArea">
-                        <div class="modalButton createButton">Create</div>
+                        <div class="modalButton createButton" onclick="createBoard()">Create</div>
                         <div class="modalButton cancelButton" onclick="toggleAddNewModal(false)">Cancel</div>
                     </div>
                 </div>
